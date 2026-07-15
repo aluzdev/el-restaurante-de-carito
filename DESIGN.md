@@ -43,7 +43,8 @@ Regla: el verde es exclusivo de WhatsApp. El rosa es la marca. Nada de verde-bla
 - `.btn-wa` / `.btn-wa-grande`: pastilla verde WhatsApp, icono SVG inline.
 - `.fab-wa`: botón flotante, oculto mientras el hero está en pantalla (con JS).
 - `.hero-precio`: sello rosa rotado −1.5° (voz de rótulo).
-- `.pago-tarjeta`: panel oscuro translúcido sobre el baño rosa; botón copiar con feedback «¡Copiado! ✓».
+- `.pago-tarjeta`: panel oscuro translúcido sobre el baño rosa; botón copiar con feedback «¡Copiado! ✓» (aria-live).
+- `.cotizador`: formulario de 4 campos opcionales (invitados, fecha, tipo, lugar) que arma el mensaje de wa.me y muestra total estimado en vivo ($130 × invitados, anticipo 50%). Inputs oscuros `--noche-2` con borde `--linea`, 48px de alto, `color-scheme: dark` en el date picker.
 - Radios: 14–16px en tarjetas/fotos, pastilla en botones. Sombras cortas (≤18px blur).
 
 ## Reglas duras
