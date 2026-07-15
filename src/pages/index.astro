@@ -11,6 +11,10 @@ const TEL_2 = { display: '55 2865 0160', href: 'tel:+525528650160' };
 
 const TARJETA = { titular: 'Ernesto Islas Figueroa', numero: '5579 1003 6029 9380', banco: 'Banco Santander' };
 
+const PRECIO_PERSONA = 130;
+
+const TIPOS_EVENTO = ['XV años', 'Boda', 'Cumpleaños', 'Bautizo o comunión', 'Posada', 'Evento de empresa', 'Otro'];
+
 const GUISADOS = [
   'Suadero',
   'Longaniza',
@@ -203,7 +207,7 @@ const unsplash = (id: string, w: number) => `${id}?auto=format&fit=crop&w=${w}&q
             <p class="pago-titular">{TARJETA.titular}</p>
             <p class="pago-numero" id="numero-tarjeta">{TARJETA.numero}</p>
             <p class="pago-banco">{TARJETA.banco}</p>
-            <button class="btn-copiar" type="button" data-numero={TARJETA.numero.replaceAll(' ', '')}>
+            <button class="btn-copiar" type="button" aria-live="polite" data-numero={TARJETA.numero.replaceAll(' ', '')}>
               Copiar número de tarjeta
             </button>
           </div>
@@ -214,16 +218,51 @@ const unsplash = (id: string, w: number) => `${id}?auto=format&fit=crop&w=${w}&q
         </div>
       </section>
 
-      <!-- ═══════════ CIERRE ═══════════ -->
-      <section class="cierre" aria-labelledby="cierre-titulo">
+      <!-- ═══════════ CIERRE / COTIZADOR ═══════════ -->
+      <section class="cierre" id="cotizar" aria-labelledby="cierre-titulo">
         <div class="cierre-inner revela">
           <h2 id="cierre-titulo">¿Taquiza para tu evento?</h2>
-          <p>XV años, bodas, bautizos, posadas o el puro gusto de echar taco.</p>
-          <a class="btn-wa btn-wa-grande" href={WA_LINK} target="_blank" rel="noopener">
+          <p>Cuéntanos de tu fiesta y te armamos el mensaje. Todo se puede ajustar ya en el chat.</p>
+
+          <form class="cotizador" novalidate>
+            <div class="campo">
+              <label for="cot-invitados">¿Cuántos invitados?</label>
+              <input
+                type="number"
+                id="cot-invitados"
+                name="invitados"
+                inputmode="numeric"
+                min="1"
+                max="5000"
+                placeholder="80"
+              />
+            </div>
+            <div class="campo">
+              <label for="cot-fecha">Fecha del evento</label>
+              <input type="date" id="cot-fecha" name="fecha" />
+            </div>
+            <div class="campo">
+              <label for="cot-tipo">Tipo de evento</label>
+              <select id="cot-tipo" name="tipo">
+                <option value="">Elige uno (opcional)</option>
+                {TIPOS_EVENTO.map((t) => <option value={t}>{t}</option>)}
+              </select>
+            </div>
+            <div class="campo">
+              <label for="cot-lugar">¿Dónde sería? <span class="campo-pista">colonia y municipio</span></label>
+              <input type="text" id="cot-lugar" name="lugar" placeholder="Col. Centro, Tlalnepantla" maxlength="80" />
+            </div>
+          </form>
+
+          <p class="cotizador-total" id="cot-total" role="status">
+            Escribe cuántos invitados para ver el total aproximado.
+          </p>
+
+          <a class="btn-wa btn-wa-grande" id="cot-enviar" href={WA_LINK} target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path
               d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"
             /></svg>
-            Escríbenos por WhatsApp
+            Enviar cotización por WhatsApp
           </a>
           <p class="cierre-tel">
             ¿Prefieres llamar? <a href={TEL_1.href}>{TEL_1.display}</a> o <a href={TEL_2.href}>{TEL_2.display}</a>
@@ -261,6 +300,14 @@ const unsplash = (id: string, w: number) => `${id}?auto=format&fit=crop&w=${w}&q
         --rosa-claro: oklch(0.81 0.13 356);
         --verde-wa: oklch(0.53 0.15 152);
         --verde-wa-2: oklch(0.58 0.16 152);
+
+        /* translúcidos derivados de --noche / --rosa (mantener en sintonía) */
+        --noche-a15: oklch(0.15 0.03 295 / 0.15);
+        --noche-a25: oklch(0.15 0.03 295 / 0.25);
+        --noche-a55: oklch(0.15 0.03 295 / 0.55);
+        --noche-a65: oklch(0.15 0.03 295 / 0.65);
+        --noche-a92: oklch(0.15 0.03 295 / 0.92);
+        --glow-rosa: oklch(0.55 0.23 356 / 0.55);
 
         --fuente-rotulo: 'Alfa Slab One', 'Rockwell', 'Georgia', serif;
         --fuente-texto: 'Archivo Variable', 'Segoe UI', system-ui, sans-serif;
@@ -401,8 +448,8 @@ const unsplash = (id: string, w: number) => `${id}?auto=format&fit=crop&w=${w}&q
         position: absolute;
         inset: 0;
         background:
-          linear-gradient(180deg, oklch(0.15 0.03 295 / 0.55) 0%, oklch(0.15 0.03 295 / 0.15) 35%, oklch(0.15 0.03 295 / 0.92) 82%, var(--noche) 100%),
-          linear-gradient(100deg, oklch(0.15 0.03 295 / 0.65) 0%, transparent 60%);
+          linear-gradient(180deg, var(--noche-a55) 0%, var(--noche-a15) 35%, var(--noche-a92) 82%, var(--noche) 100%),
+          linear-gradient(100deg, var(--noche-a65) 0%, transparent 60%);
       }
 
       .hero-contenido {
@@ -660,7 +707,7 @@ const unsplash = (id: string, w: number) => `${id}?auto=format&fit=crop&w=${w}&q
 
       .guisados-lista li:hover {
         color: var(--rosa-claro);
-        text-shadow: 0 0 24px oklch(0.55 0.23 356 / 0.55);
+        text-shadow: 0 0 24px var(--glow-rosa);
       }
 
       /* ── Pasos ──────────────────────────────────────────── */
@@ -752,7 +799,7 @@ const unsplash = (id: string, w: number) => `${id}?auto=format&fit=crop&w=${w}&q
       }
 
       .pago-tarjeta {
-        background: oklch(0.15 0.03 295 / 0.25);
+        background: var(--noche-a25);
         border-radius: 16px;
         padding: clamp(1.5rem, 5vw, 2.5rem);
       }
@@ -793,6 +840,12 @@ const unsplash = (id: string, w: number) => `${id}?auto=format&fit=crop&w=${w}&q
         transform: translateY(-2px);
       }
 
+      /* sobre el baño rosa, el anillo rosa-claro no se ve: usar noche */
+      .pago .btn-copiar:focus-visible,
+      .pago a:focus-visible {
+        outline-color: var(--noche);
+      }
+
       .pago-nota {
         margin: 1.5rem auto 0;
         max-width: 34rem;
@@ -819,6 +872,81 @@ const unsplash = (id: string, w: number) => `${id}?auto=format&fit=crop&w=${w}&q
         color: var(--tinta-2);
         font-size: 1.15rem;
         margin: 0 0 2rem;
+      }
+
+      /* ── Cotizador ──────────────────────────────────────── */
+      .cotizador {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.1rem 1.5rem;
+        max-width: 44rem;
+        margin: 0 auto 1.5rem;
+        text-align: left;
+      }
+
+      @media (min-width: 640px) {
+        .cotizador {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .campo {
+        display: grid;
+        gap: 0.4rem;
+      }
+
+      .campo label {
+        font-weight: 600;
+        font-size: 0.98rem;
+      }
+
+      .campo-pista {
+        font-weight: 400;
+        color: var(--tinta-2);
+        font-size: 0.9rem;
+      }
+
+      .campo input,
+      .campo select {
+        font: inherit;
+        color: var(--tinta);
+        background: var(--noche-2);
+        border: 1px solid var(--linea);
+        border-radius: 10px;
+        padding: 0.7rem 0.9rem;
+        min-height: 3rem;
+        width: 100%;
+        transition: border-color 0.2s;
+      }
+
+      .campo input::placeholder {
+        color: var(--tinta-2);
+        opacity: 1;
+      }
+
+      .campo input:hover,
+      .campo select:hover {
+        border-color: var(--jacaranda);
+      }
+
+      .campo input:focus-visible,
+      .campo select:focus-visible {
+        outline: 3px solid var(--rosa-claro);
+        outline-offset: 1px;
+        border-color: transparent;
+      }
+
+      /* el picker de fecha en tema oscuro */
+      .campo input[type='date'] {
+        color-scheme: dark;
+      }
+
+      .cotizador-total {
+        color: var(--rosa-claro);
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin: 0 0 2rem;
+        min-height: 1.7em;
       }
 
       .btn-wa-grande {
@@ -855,6 +983,10 @@ const unsplash = (id: string, w: number) => `${id}?auto=format&fit=crop&w=${w}&q
       .cierre-tel a {
         color: var(--tinta-2);
         white-space: nowrap;
+        /* área táctil ≥44px sin romper el flujo de texto */
+        display: inline-block;
+        padding: 0.6rem 0.2rem;
+        margin: -0.45rem 0;
       }
 
       .cierre-tel a {
@@ -961,6 +1093,52 @@ const unsplash = (id: string, w: number) => `${id}?auto=format&fit=crop&w=${w}&q
           ([e]) => fab.classList.toggle('show', e.intersectionRatio < 0.25),
           { threshold: [0, 0.25, 1] }
         ).observe(hero);
+      }
+
+      // Cotizador: arma el mensaje de WhatsApp con los datos del evento
+      const PRECIO = 130;
+      const WA_BASE = 'https://wa.me/525554155186';
+      const inputInvitados = document.querySelector<HTMLInputElement>('#cot-invitados');
+      const inputFecha = document.querySelector<HTMLInputElement>('#cot-fecha');
+      const inputTipo = document.querySelector<HTMLSelectElement>('#cot-tipo');
+      const inputLugar = document.querySelector<HTMLInputElement>('#cot-lugar');
+      const totalEl = document.querySelector<HTMLElement>('#cot-total');
+      const enviarEl = document.querySelector<HTMLAnchorElement>('#cot-enviar');
+
+      const dinero = (n: number) => '$' + n.toLocaleString('es-MX');
+
+      function actualizarCotizador() {
+        if (!totalEl || !enviarEl) return;
+
+        const lineas = ['Hola, quiero cotizar una taquiza para mi evento.'];
+        const invitados = Number(inputInvitados?.value);
+
+        if (invitados >= 1) {
+          const total = invitados * PRECIO;
+          lineas.push(`• Invitados: ${invitados} personas`);
+          lineas.push(`• Total aproximado: ${dinero(total)}`);
+          totalEl.textContent = `Total aproximado: ${dinero(total)} · se aparta con ${dinero(total / 2)}`;
+        } else {
+          totalEl.textContent = 'Escribe cuántos invitados para ver el total aproximado.';
+        }
+
+        if (inputFecha?.value) {
+          const fecha = new Date(inputFecha.value + 'T12:00:00');
+          if (!Number.isNaN(fecha.getTime())) {
+            lineas.push(
+              `• Fecha: ${new Intl.DateTimeFormat('es-MX', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(fecha)}`
+            );
+          }
+        }
+
+        if (inputTipo?.value) lineas.push(`• Evento: ${inputTipo.value}`);
+        if (inputLugar?.value.trim()) lineas.push(`• Lugar: ${inputLugar.value.trim()}`);
+
+        enviarEl.href = `${WA_BASE}?text=${encodeURIComponent(lineas.join('\n'))}`;
+      }
+
+      for (const campo of [inputInvitados, inputFecha, inputTipo, inputLugar]) {
+        campo?.addEventListener('input', actualizarCotizador);
       }
 
       // Copiar número de tarjeta
