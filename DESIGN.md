@@ -40,11 +40,11 @@ Regla: el verde es exclusivo de WhatsApp. El rosa es la marca. Nada de verde-bla
 
 ## Componentes / patrones
 
-- `.btn-wa` / `.btn-wa-grande`: pastilla verde WhatsApp, icono SVG inline.
-- `.fab-wa`: botón flotante, oculto mientras el hero está en pantalla (con JS).
+- `.btn-wa` / `.btn-wa-grande`: pastilla verde WhatsApp, icono SVG inline. `.btn-rosa`: pastilla rosa para CTAs internos (ej. hero → #cotizar); el verde nunca se usa para acciones que no abren WhatsApp.
+- `.fab-wa`: botón flotante de WhatsApp, siempre visible (es la ruta directa; el CTA del hero lleva al cotizador).
 - `.hero-precio`: sello rosa rotado −1.5° (voz de rótulo).
 - `.pago-tarjeta`: panel oscuro translúcido sobre el baño rosa; botón copiar con feedback «¡Copiado! ✓» (aria-live).
-- `.cotizador`: formulario de 4 campos opcionales (invitados, fecha, tipo, lugar) que arma el mensaje de wa.me y muestra total estimado en vivo ($130 × invitados, anticipo 50%). Inputs oscuros `--noche-2` con borde `--linea`, 48px de alto, `color-scheme: dark` en el date picker.
+- `.cotizador`: formulario de 3 campos opcionales (invitados, fecha, lugar) que arma el mensaje de wa.me y muestra total estimado en vivo ($130 × invitados, anticipo 50%). Inputs oscuros `--noche-2` con borde `--linea`, 48px de alto. Invitados usa `.stepper` propio (−/+ de a 10, arranca en 50; spinners nativos ocultos). Fecha usa el picker nativo (superior en móvil) con `color-scheme: dark` e ícono tintado al rosa vía `filter`. Sin más campos: la conversión manda (nada de Maps ni selects).
 - Radios: 14–16px en tarjetas/fotos, pastilla en botones. Sombras cortas (≤18px blur).
 
 ## Reglas duras
