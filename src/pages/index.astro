@@ -1,0 +1,982 @@
+---
+import '@fontsource/alfa-slab-one';
+import '@fontsource-variable/archivo';
+
+const WA_PRINCIPAL = '525554155186';
+const WA_LINK = `https://wa.me/${WA_PRINCIPAL}?text=${encodeURIComponent(
+  'Hola, vi su página y quiero cotizar una taquiza para mi evento.'
+)}`;
+const TEL_1 = { display: '55 5415 5186', href: 'tel:+525554155186' };
+const TEL_2 = { display: '55 2865 0160', href: 'tel:+525528650160' };
+
+const TARJETA = { titular: 'Ernesto Islas Figueroa', numero: '5579 1003 6029 9380', banco: 'Banco Santander' };
+
+const GUISADOS = [
+  'Suadero',
+  'Longaniza',
+  'Pastor a la plancha',
+  'Barriga',
+  'Choriquesos',
+  'Gringas',
+  'Volcanes',
+  'Bistec',
+  'Alambre',
+  'Campechanos',
+];
+
+const INCLUYE = [
+  { que: 'Salsas verde y roja', detalle: 'el toque que no puede faltar' },
+  { que: 'Verdura fresca', detalle: 'limones, cilantro y cebolla' },
+  { que: 'Ensalada', detalle: 'para acompañar' },
+  { que: 'Platos y servilletas', detalle: 'no te preocupas por nada' },
+];
+
+// Imágenes verificadas en Unsplash (los IDs resuelven; no son placeholders)
+const IMG_HERO = 'https://images.unsplash.com/photo-1596995804697-27d11d43652e';
+const IMG_TACOS = 'https://images.unsplash.com/photo-1552332386-f8dd00dc2f85';
+const IMG_MESA = 'https://images.unsplash.com/photo-1591735200387-c29c7d0ec3d3';
+const unsplash = (id: string, w: number) => `${id}?auto=format&fit=crop&w=${w}&q=80`;
+---
+
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Taquizas Don Neto · Taquizas para eventos en CDMX · $130 por persona</title>
+    <meta
+      name="description"
+      content="Taquiza todo incluido para tu evento: 10 guisados, salsas, verdura, platos y servilletas. $130 por persona. Aparta tu fecha por WhatsApp: 55 5415 5186."
+    />
+    <meta name="theme-color" content="#1c1826" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content="Taquizas Don Neto · $130 por persona, todo incluido" />
+    <meta property="og:description" content="10 guisados, salsas y todo lo necesario para tu evento. Cotiza por WhatsApp." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={unsplash(IMG_HERO, 1200)} />
+    <meta property="og:locale" content="es_MX" />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+
+  <body>
+    <!-- ═══════════ HERO ═══════════ -->
+    <header class="hero">
+      <picture class="hero-media">
+        <img
+          src={unsplash(IMG_HERO, 1600)}
+          srcset={`${unsplash(IMG_HERO, 800)} 800w, ${unsplash(IMG_HERO, 1400)} 1400w, ${unsplash(IMG_HERO, 2000)} 2000w`}
+          sizes="100vw"
+          width="1600"
+          height="1261"
+          alt="Taquero rebanando el trompo de pastor, con el fuego encendido en la oscuridad"
+          fetchpriority="high"
+        />
+      </picture>
+      <div class="hero-velo" aria-hidden="true"></div>
+
+      <div class="hero-contenido">
+        <p class="hero-arriba">Taquizas para eventos · CDMX y Área Metropolitana</p>
+        <h1 class="hero-titulo">
+          <span class="hero-taquizas">Taquizas</span>
+          <span class="hero-nombre">Don&nbsp;Neto</span>
+        </h1>
+        <p class="hero-bajada">
+          La plancha llega a tu fiesta con 10 guisados, salsas y todo lo necesario.
+          Tú nomás pones a los invitados.
+        </p>
+        <div class="hero-acciones">
+          <a class="btn-wa" href={WA_LINK} target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"
+            /></svg>
+            Cotiza por WhatsApp
+          </a>
+          <a class="btn-fantasma" href="#paquete">Ver el paquete</a>
+        </div>
+        <p class="hero-precio"><strong>$130</strong> por persona · todo incluido</p>
+      </div>
+    </header>
+
+    <main>
+      <!-- ═══════════ EL PAQUETE ═══════════ -->
+      <section class="paquete" id="paquete" aria-labelledby="paquete-titulo">
+        <div class="paquete-grid">
+          <div class="paquete-texto revela">
+            <h2 id="paquete-titulo" class="titulo-seccion">Un solo paquete.<br />Sin letras chiquitas.</h2>
+            <p class="paquete-precio">
+              <span class="precio-cifra">$130</span>
+              <span class="precio-nota">por persona</span>
+            </p>
+            <ul class="paquete-lista">
+              {INCLUYE.map((item) => (
+                <li>
+                  <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path
+                    d="M2.5 8.5 6 12l7.5-8"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  /></svg>
+                  <span><strong>{item.que}</strong> — {item.detalle}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="paquete-cierre">
+              Llegamos con la plancha, los guisados y todo lo que se necesita para servir.
+              Tortilla recién hecha, taco tras taco, hasta que tus invitados digan basta.
+            </p>
+          </div>
+          <figure class="paquete-foto revela">
+            <img
+              src={unsplash(IMG_TACOS, 900)}
+              srcset={`${unsplash(IMG_TACOS, 600)} 600w, ${unsplash(IMG_TACOS, 900)} 900w, ${unsplash(IMG_TACOS, 1300)} 1300w`}
+              sizes="(min-width: 800px) 44vw, 92vw"
+              width="900"
+              height="600"
+              alt="Tacos de suadero con cilantro y cebolla, limón, rábano y pepino"
+              loading="lazy"
+            />
+            <figcaption>Así se sirve: con su limón, su cilantro y su cebolla.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ═══════════ LOS GUISADOS ═══════════ -->
+      <section class="guisados" aria-labelledby="guisados-titulo">
+        <div class="guisados-inner">
+          <h2 id="guisados-titulo" class="titulo-seccion revela">Lo que sale de la plancha</h2>
+          <p class="guisados-nota revela">Diez guisados en tu taquiza:</p>
+          <ul class="guisados-lista">
+            {GUISADOS.map((g) => (
+              <li class="revela">{g}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <!-- ═══════════ CÓMO APARTAR ═══════════ -->
+      <section class="pasos" aria-labelledby="pasos-titulo">
+        <div class="pasos-inner">
+          <div class="pasos-cabecera revela">
+            <h2 id="pasos-titulo" class="titulo-seccion">Aparta tu fecha</h2>
+            <p class="pasos-nota">Así de fácil, en tres pasos:</p>
+          </div>
+          <ol class="pasos-lista">
+            <li class="revela">
+              <span class="paso-numero" aria-hidden="true">1</span>
+              <h3>Cotiza por WhatsApp</h3>
+              <p>Cuéntanos la fecha, el lugar y cuántos invitados esperas. Te respondemos con tu cotización.</p>
+            </li>
+            <li class="revela">
+              <span class="paso-numero" aria-hidden="true">2</span>
+              <h3>Aparta con el 50%</h3>
+              <p>Con la mitad por transferencia tu fecha queda reservada. Nos mandas tu comprobante por WhatsApp.</p>
+            </li>
+            <li class="revela">
+              <span class="paso-numero" aria-hidden="true">3</span>
+              <h3>El día del evento</h3>
+              <p>Se liquida el 50% restante y nosotros nos encargamos de que nadie se quede con hambre.</p>
+            </li>
+          </ol>
+          <figure class="pasos-foto revela">
+            <img
+              src={unsplash(IMG_MESA, 900)}
+              srcset={`${unsplash(IMG_MESA, 600)} 600w, ${unsplash(IMG_MESA, 900)} 900w`}
+              sizes="(min-width: 800px) 38vw, 92vw"
+              width="900"
+              height="900"
+              alt="Mesa con salsas caseras, totopos y un refresco bien frío"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <!-- ═══════════ DATOS DE PAGO ═══════════ -->
+      <section class="pago" aria-labelledby="pago-titulo">
+        <div class="pago-inner revela">
+          <h2 id="pago-titulo" class="titulo-seccion">Datos para tu transferencia</h2>
+          <div class="pago-tarjeta">
+            <p class="pago-titular">{TARJETA.titular}</p>
+            <p class="pago-numero" id="numero-tarjeta">{TARJETA.numero}</p>
+            <p class="pago-banco">{TARJETA.banco}</p>
+            <button class="btn-copiar" type="button" data-numero={TARJETA.numero.replaceAll(' ', '')}>
+              Copiar número de tarjeta
+            </button>
+          </div>
+          <p class="pago-nota">
+            Después de transferir, manda tu comprobante por WhatsApp al
+            <a href={WA_LINK} target="_blank" rel="noopener">{TEL_1.display}</a> para confirmar tu apartado.
+          </p>
+        </div>
+      </section>
+
+      <!-- ═══════════ CIERRE ═══════════ -->
+      <section class="cierre" aria-labelledby="cierre-titulo">
+        <div class="cierre-inner revela">
+          <h2 id="cierre-titulo">¿Taquiza para tu evento?</h2>
+          <p>XV años, bodas, bautizos, posadas o el puro gusto de echar taco.</p>
+          <a class="btn-wa btn-wa-grande" href={WA_LINK} target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"
+            /></svg>
+            Escríbenos por WhatsApp
+          </a>
+          <p class="cierre-tel">
+            ¿Prefieres llamar? <a href={TEL_1.href}>{TEL_1.display}</a> o <a href={TEL_2.href}>{TEL_2.display}</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="pie">
+      <p class="pie-marca">Taquizas Don Neto</p>
+      <p class="pie-datos">
+        CDMX y Área Metropolitana ·
+        <a href={TEL_1.href}>{TEL_1.display}</a> ·
+        <a href={TEL_2.href}>{TEL_2.display}</a>
+      </p>
+    </footer>
+
+    <a class="fab-wa" href={WA_LINK} target="_blank" rel="noopener" aria-label="Cotiza por WhatsApp">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"
+      /></svg>
+    </a>
+
+    <style is:global>
+      /* ── Tokens ─────────────────────────────────────────── */
+      :root {
+        --noche: oklch(0.15 0.03 295);
+        --noche-2: oklch(0.19 0.035 295);
+        --noche-3: oklch(0.24 0.04 295);
+        --linea: oklch(0.34 0.05 295);
+        --tinta: oklch(0.965 0.008 295);
+        --tinta-2: oklch(0.82 0.03 295);
+        --jacaranda: oklch(0.76 0.11 295);
+        --rosa: oklch(0.55 0.23 356);
+        --rosa-claro: oklch(0.81 0.13 356);
+        --verde-wa: oklch(0.53 0.15 152);
+        --verde-wa-2: oklch(0.58 0.16 152);
+
+        --fuente-rotulo: 'Alfa Slab One', 'Rockwell', 'Georgia', serif;
+        --fuente-texto: 'Archivo Variable', 'Segoe UI', system-ui, sans-serif;
+
+        --ancho-max: 68rem;
+        --z-fab: 40;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--noche);
+        color: var(--tinta);
+        font-family: var(--fuente-texto);
+        font-size: 1.0625rem;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3 {
+        text-wrap: balance;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      a {
+        color: var(--rosa-claro);
+      }
+
+      ::selection {
+        background: var(--rosa);
+        color: var(--tinta);
+      }
+
+      /* ── Tipos compartidos ──────────────────────────────── */
+      .titulo-seccion {
+        font-family: var(--fuente-rotulo);
+        font-weight: 400;
+        font-size: clamp(1.9rem, 4.5vw, 3rem);
+        line-height: 1.12;
+        margin: 0 0 1rem;
+        letter-spacing: 0.01em;
+      }
+
+      /* ── Botones ────────────────────────────────────────── */
+      .btn-wa {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        background: var(--verde-wa);
+        color: var(--tinta);
+        font-weight: 700;
+        font-size: 1.1rem;
+        text-decoration: none;
+        padding: 0.95rem 1.7rem;
+        border-radius: 999px;
+        transition: background 0.25s cubic-bezier(0.22, 1, 0.36, 1), transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .btn-wa:hover {
+        background: var(--verde-wa-2);
+        transform: translateY(-2px);
+      }
+
+      .btn-wa:focus-visible,
+      .btn-fantasma:focus-visible,
+      .btn-copiar:focus-visible,
+      .fab-wa:focus-visible {
+        outline: 3px solid var(--rosa-claro);
+        outline-offset: 3px;
+      }
+
+      .btn-fantasma {
+        display: inline-flex;
+        align-items: center;
+        color: var(--tinta);
+        font-weight: 600;
+        text-decoration: none;
+        padding: 0.95rem 1.4rem;
+        border: 1px solid oklch(0.96 0.01 295 / 0.45);
+        border-radius: 999px;
+        transition: border-color 0.25s, background 0.25s;
+      }
+
+      .btn-fantasma:hover {
+        border-color: var(--tinta);
+        background: oklch(0.96 0.01 295 / 0.08);
+      }
+
+      /* ── Hero ───────────────────────────────────────────── */
+      .hero {
+        position: relative;
+        min-height: 100svh;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+      }
+
+      .hero-media,
+      .hero-media img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 65% center;
+      }
+
+      html.js .hero-media img {
+        animation: hero-zoom 2.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+
+      @keyframes hero-zoom {
+        from {
+          transform: scale(1.07);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+      .hero-velo {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, oklch(0.15 0.03 295 / 0.55) 0%, oklch(0.15 0.03 295 / 0.15) 35%, oklch(0.15 0.03 295 / 0.92) 82%, var(--noche) 100%),
+          linear-gradient(100deg, oklch(0.15 0.03 295 / 0.65) 0%, transparent 60%);
+      }
+
+      .hero-contenido {
+        position: relative;
+        width: min(var(--ancho-max), 100% - 2.5rem);
+        margin-inline: auto;
+        padding-block: clamp(3rem, 8vh, 5.5rem);
+      }
+
+      .hero-arriba {
+        margin: 0 0 0.75rem;
+        font-weight: 600;
+        color: var(--rosa-claro);
+        font-size: 1rem;
+      }
+
+      .hero-titulo {
+        font-family: var(--fuente-rotulo);
+        font-weight: 400;
+        margin: 0;
+        line-height: 0.95;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hero-taquizas {
+        font-size: clamp(1.6rem, 5vw, 3rem);
+        color: var(--rosa-claro);
+        letter-spacing: 0.06em;
+      }
+
+      .hero-nombre {
+        font-size: clamp(3.4rem, 12vw, 6rem);
+        letter-spacing: 0.01em;
+        text-shadow: 0 4px 30px oklch(0.15 0.03 295 / 0.7);
+      }
+
+      .hero-bajada {
+        max-width: 34rem;
+        font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+        margin: 1.25rem 0 1.75rem;
+        color: var(--tinta);
+      }
+
+      .hero-acciones {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        align-items: center;
+      }
+
+      .hero-precio {
+        margin: 1.5rem 0 0;
+        display: inline-block;
+        background: var(--rosa);
+        color: var(--tinta);
+        font-weight: 700;
+        padding: 0.45rem 1.1rem;
+        border-radius: 8px;
+        transform: rotate(-1.5deg);
+        font-size: 1.05rem;
+      }
+
+      .hero-precio strong {
+        font-family: var(--fuente-rotulo);
+        font-weight: 400;
+        font-size: 1.35em;
+        margin-right: 0.15rem;
+      }
+
+      /* Entrada orquestada del hero */
+      html.js .hero-arriba,
+      html.js .hero-titulo,
+      html.js .hero-bajada,
+      html.js .hero-acciones,
+      html.js .hero-precio {
+        animation: sube 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+
+      html.js .hero-titulo { animation-delay: 0.12s; }
+      html.js .hero-bajada { animation-delay: 0.24s; }
+      html.js .hero-acciones { animation-delay: 0.36s; }
+      html.js .hero-precio { animation-delay: 0.48s; }
+
+      @keyframes sube {
+        from {
+          opacity: 0;
+          transform: translateY(26px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* el sello de precio conserva su rotación al final */
+      html.js .hero-precio {
+        animation-name: sube-sello;
+      }
+
+      @keyframes sube-sello {
+        from {
+          opacity: 0;
+          transform: translateY(26px) rotate(-1.5deg);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) rotate(-1.5deg);
+        }
+      }
+
+      /* ── Secciones base ─────────────────────────────────── */
+      section {
+        padding-block: clamp(4rem, 10vw, 7rem);
+      }
+
+      .paquete-grid,
+      .guisados-inner,
+      .pasos-inner,
+      .pago-inner,
+      .cierre-inner {
+        width: min(var(--ancho-max), 100% - 2.5rem);
+        margin-inline: auto;
+      }
+
+      /* Reveals: visibles por defecto; solo con JS parten ocultos */
+      html.js .revela {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      html.js .revela.visto {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* ── El paquete ─────────────────────────────────────── */
+      .paquete-grid {
+        display: grid;
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      @media (min-width: 800px) {
+        .paquete-grid {
+          grid-template-columns: 1.15fr 1fr;
+          gap: 4rem;
+        }
+      }
+
+      .paquete-precio {
+        margin: 0.5rem 0 1.75rem;
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+      }
+
+      .precio-cifra {
+        font-family: var(--fuente-rotulo);
+        font-size: clamp(3.2rem, 8vw, 4.8rem);
+        line-height: 1;
+        color: var(--rosa-claro);
+      }
+
+      .precio-nota {
+        font-size: 1.15rem;
+        color: var(--tinta-2);
+        font-weight: 600;
+      }
+
+      .paquete-lista {
+        list-style: none;
+        margin: 0 0 1.5rem;
+        padding: 0;
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .paquete-lista li {
+        display: flex;
+        gap: 0.75rem;
+        align-items: baseline;
+      }
+
+      .paquete-lista svg {
+        flex: none;
+        color: var(--jacaranda);
+        translate: 0 3px;
+      }
+
+      .paquete-lista strong {
+        color: var(--tinta);
+      }
+
+      .paquete-lista span {
+        color: var(--tinta-2);
+      }
+
+      .paquete-cierre {
+        color: var(--tinta-2);
+        max-width: 46ch;
+        margin: 0;
+      }
+
+      .paquete-foto {
+        margin: 0;
+      }
+
+      .paquete-foto img {
+        border-radius: 14px;
+        box-shadow: 0 6px 18px oklch(0.1 0.02 295 / 0.55);
+      }
+
+      .paquete-foto figcaption {
+        margin-top: 0.75rem;
+        color: var(--tinta-2);
+        font-size: 0.95rem;
+      }
+
+      /* ── Guisados ───────────────────────────────────────── */
+      .guisados {
+        background: var(--noche-2);
+      }
+
+      .guisados-nota {
+        color: var(--tinta-2);
+        margin: 0 0 2rem;
+        font-size: 1.1rem;
+      }
+
+      .guisados-lista {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        column-gap: 3.5rem;
+      }
+
+      @media (min-width: 640px) {
+        .guisados-lista {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .guisados-lista li {
+        font-family: var(--fuente-rotulo);
+        font-size: clamp(1.5rem, 3.6vw, 2.2rem);
+        line-height: 1.2;
+        padding: 0.85rem 0.25rem;
+        border-bottom: 1px solid var(--linea);
+        transition: color 0.3s, text-shadow 0.3s;
+      }
+
+      .guisados-lista li:hover {
+        color: var(--rosa-claro);
+        text-shadow: 0 0 24px oklch(0.55 0.23 356 / 0.55);
+      }
+
+      /* ── Pasos ──────────────────────────────────────────── */
+      .pasos-inner {
+        display: grid;
+        gap: 2.5rem;
+      }
+
+      @media (min-width: 900px) {
+        .pasos-inner {
+          grid-template-columns: 1.4fr 1fr;
+          grid-template-areas:
+            'cabecera foto'
+            'lista foto';
+          column-gap: 4rem;
+          align-items: start;
+        }
+
+        .pasos-cabecera { grid-area: cabecera; }
+        .pasos-lista { grid-area: lista; }
+        .pasos-foto { grid-area: foto; }
+      }
+
+      .pasos-nota {
+        color: var(--tinta-2);
+        margin: 0;
+        font-size: 1.1rem;
+      }
+
+      .pasos-lista {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 2rem;
+        counter-reset: paso;
+      }
+
+      .paso-numero {
+        display: inline-grid;
+        place-items: center;
+        width: 2.6rem;
+        height: 2.6rem;
+        border-radius: 50%;
+        background: var(--rosa);
+        color: var(--tinta);
+        font-family: var(--fuente-rotulo);
+        font-size: 1.25rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .pasos-lista h3 {
+        font-family: var(--fuente-rotulo);
+        font-weight: 400;
+        font-size: 1.35rem;
+        margin: 0 0 0.35rem;
+      }
+
+      .pasos-lista p {
+        margin: 0;
+        color: var(--tinta-2);
+        max-width: 44ch;
+      }
+
+      .pasos-foto {
+        margin: 0;
+        align-self: center;
+      }
+
+      .pasos-foto img {
+        border-radius: 14px;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+      }
+
+      /* ── Pago (baño rosa) ───────────────────────────────── */
+      .pago {
+        background: var(--rosa);
+        color: var(--tinta);
+      }
+
+      .pago-inner {
+        max-width: 40rem;
+        text-align: center;
+      }
+
+      .pago .titulo-seccion {
+        margin-bottom: 2rem;
+      }
+
+      .pago-tarjeta {
+        background: oklch(0.15 0.03 295 / 0.25);
+        border-radius: 16px;
+        padding: clamp(1.5rem, 5vw, 2.5rem);
+      }
+
+      .pago-titular {
+        margin: 0 0 0.5rem;
+        font-weight: 700;
+        font-size: 1.15rem;
+      }
+
+      .pago-numero {
+        font-family: var(--fuente-rotulo);
+        font-size: clamp(1.35rem, 5.5vw, 2.1rem);
+        letter-spacing: 0.04em;
+        margin: 0 0 0.5rem;
+        line-height: 1.2;
+      }
+
+      .pago-banco {
+        margin: 0 0 1.5rem;
+        font-weight: 600;
+        opacity: 0.9;
+      }
+
+      .btn-copiar {
+        font: inherit;
+        font-weight: 700;
+        color: var(--rosa);
+        background: var(--tinta);
+        border: 0;
+        border-radius: 999px;
+        padding: 0.8rem 1.5rem;
+        cursor: pointer;
+        transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .btn-copiar:hover {
+        transform: translateY(-2px);
+      }
+
+      .pago-nota {
+        margin: 1.5rem auto 0;
+        max-width: 34rem;
+      }
+
+      .pago-nota a {
+        color: var(--tinta);
+        font-weight: 700;
+      }
+
+      /* ── Cierre ─────────────────────────────────────────── */
+      .cierre {
+        text-align: center;
+      }
+
+      .cierre h2 {
+        font-family: var(--fuente-rotulo);
+        font-weight: 400;
+        font-size: clamp(2rem, 6vw, 3.4rem);
+        margin: 0 0 0.75rem;
+      }
+
+      .cierre p {
+        color: var(--tinta-2);
+        font-size: 1.15rem;
+        margin: 0 0 2rem;
+      }
+
+      .btn-wa-grande {
+        font-size: clamp(1.05rem, 3.4vw, 1.2rem);
+        padding: 1.1rem clamp(1.4rem, 4vw, 2.2rem);
+        white-space: nowrap;
+      }
+
+      .cierre-tel {
+        margin-top: 1.75rem !important;
+        font-size: 1rem !important;
+      }
+
+      /* ── Pie ────────────────────────────────────────────── */
+      .pie {
+        border-top: 1px solid var(--noche-3);
+        padding: 2.5rem 1.25rem 3rem;
+        text-align: center;
+      }
+
+      .pie-marca {
+        font-family: var(--fuente-rotulo);
+        font-size: 1.3rem;
+        margin: 0 0 0.4rem;
+      }
+
+      .pie-datos {
+        margin: 0;
+        color: var(--tinta-2);
+        font-size: 0.95rem;
+      }
+
+      .pie-datos a,
+      .cierre-tel a {
+        color: var(--tinta-2);
+        white-space: nowrap;
+      }
+
+      .cierre-tel a {
+        color: var(--rosa-claro);
+      }
+
+      /* ── FAB WhatsApp ───────────────────────────────────── */
+      .fab-wa {
+        position: fixed;
+        right: 1.1rem;
+        bottom: 1.1rem;
+        z-index: var(--z-fab);
+        display: grid;
+        place-items: center;
+        width: 3.6rem;
+        height: 3.6rem;
+        border-radius: 50%;
+        background: var(--verde-wa);
+        color: var(--tinta);
+        box-shadow: 0 4px 14px oklch(0.1 0.02 295 / 0.6);
+        transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s, background 0.25s;
+      }
+
+      .fab-wa:hover {
+        background: var(--verde-wa-2);
+        transform: scale(1.07);
+      }
+
+      /* con JS: oculto mientras el hero está en pantalla */
+      html.js .fab-wa {
+        opacity: 0;
+        transform: translateY(14px);
+        pointer-events: none;
+      }
+
+      html.js .fab-wa.show {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+
+      /* ── Reduced motion ─────────────────────────────────── */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        html.js .hero-media img,
+        html.js .hero-arriba,
+        html.js .hero-titulo,
+        html.js .hero-bajada,
+        html.js .hero-acciones,
+        html.js .hero-precio {
+          animation: none;
+        }
+
+        html.js .revela {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+
+        html.js .fab-wa,
+        html.js .fab-wa.show {
+          transition: opacity 0.2s;
+          transform: none;
+        }
+
+        .btn-wa,
+        .btn-copiar,
+        .fab-wa,
+        .guisados-lista li {
+          transition: none;
+        }
+      }
+    </style>
+
+    <script>
+      // Reveals por sección (los estilos base son visibles sin JS)
+      const revelados = document.querySelectorAll('.revela');
+      const io = new IntersectionObserver(
+        (entradas) => {
+          for (const e of entradas) {
+            if (e.isIntersecting) {
+              (e.target as HTMLElement).classList.add('visto');
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { rootMargin: '0px 0px -8% 0px' }
+      );
+      revelados.forEach((el) => io.observe(el));
+
+      // Escalonado de la lista de guisados
+      document.querySelectorAll<HTMLElement>('.guisados-lista li').forEach((li, i) => {
+        li.style.transitionDelay = `${Math.min(i * 60, 420)}ms`;
+      });
+
+      // FAB visible al salir del hero
+      const hero = document.querySelector('.hero');
+      const fab = document.querySelector('.fab-wa');
+      if (hero && fab) {
+        new IntersectionObserver(
+          ([e]) => fab.classList.toggle('show', e.intersectionRatio < 0.25),
+          { threshold: [0, 0.25, 1] }
+        ).observe(hero);
+      }
+
+      // Copiar número de tarjeta
+      const boton = document.querySelector<HTMLButtonElement>('.btn-copiar');
+      if (boton) {
+        const original = boton.textContent;
+        boton.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(boton.dataset.numero ?? '');
+            boton.textContent = '¡Copiado! ✓';
+          } catch {
+            boton.textContent = 'Selecciónalo y cópialo manualmente';
+          }
+          setTimeout(() => (boton.textContent = original), 2200);
+        });
+      }
+    </script>
+  </body>
+</html>
